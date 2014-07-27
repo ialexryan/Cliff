@@ -12,6 +12,7 @@
 
 @property (weak) IBOutlet NSWindow *window;
 @property NSStatusItem *statusItem;
+@property (weak) IBOutlet NSMenu *statusMenu;
 
 @end
 
@@ -23,10 +24,20 @@
     _statusItem = [[NSStatusBar systemStatusBar]statusItemWithLength:NSVariableStatusItemLength];
     [_statusItem setImage:[NSImage imageNamed:@"menu_icon"]];
     [_statusItem setHighlightMode:YES];
+    [_statusItem setMenu:self.statusMenu];
+
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (IBAction)addNewDevice:(id)sender {
+    [self.window makeKeyAndOrderFront:sender];
+}
+
+- (IBAction)quitPress:(id)sender {
+    [[NSApplication sharedApplication]terminate:self];
 }
 
 @end
