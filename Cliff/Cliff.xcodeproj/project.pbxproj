@@ -13,6 +13,7 @@
 		B31C9F2419858F3B00A51450 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31C9F2219858F3B00A51450 /* Main.storyboard */; };
 		B31C9F2619858F3B00A51450 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31C9F2519858F3B00A51450 /* Images.xcassets */; };
 		B31C9F3219858F3B00A51450 /* CliffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C9F3119858F3B00A51450 /* CliffTests.m */; };
+		B3841FF51985993D008D0F2C /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3841FF41985993D008D0F2C /* LocalAuthentication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		B31C9F2B19858F3B00A51450 /* CliffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31C9F3019858F3B00A51450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B31C9F3119858F3B00A51450 /* CliffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CliffTests.m; sourceTree = "<group>"; };
+		B3841FF41985993D008D0F2C /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3841FF51985993D008D0F2C /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +64,7 @@
 		B31C9F0C19858F3B00A51450 = {
 			isa = PBXGroup;
 			children = (
+				B3841FF41985993D008D0F2C /* LocalAuthentication.framework */,
 				B31C9F1719858F3B00A51450 /* Cliff */,
 				B31C9F2E19858F3B00A51450 /* CliffTests */,
 				B31C9F1619858F3B00A51450 /* Products */,
