@@ -70,11 +70,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)buttonPress:(id)sender {
-    UILocalNotification *notification = [[UILocalNotification alloc]init];
-    notification.alertBody = @"Click me to unlock your computer";
-    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+-(void)buttonPress:(UIButton*)sender{
+
 }
 
 @end

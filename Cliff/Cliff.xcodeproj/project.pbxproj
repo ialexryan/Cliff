@@ -13,7 +13,6 @@
 		B31C9F2419858F3B00A51450 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31C9F2219858F3B00A51450 /* Main.storyboard */; };
 		B31C9F2619858F3B00A51450 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31C9F2519858F3B00A51450 /* Images.xcassets */; };
 		B31C9F3219858F3B00A51450 /* CliffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C9F3119858F3B00A51450 /* CliffTests.m */; };
-		B3841FF51985993D008D0F2C /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3841FF41985993D008D0F2C /* LocalAuthentication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3841FF51985993D008D0F2C /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +62,6 @@
 		B31C9F0C19858F3B00A51450 = {
 			isa = PBXGroup;
 			children = (
-				B3841FF41985993D008D0F2C /* LocalAuthentication.framework */,
 				B31C9F1719858F3B00A51450 /* Cliff */,
 				B31C9F2E19858F3B00A51450 /* CliffTests */,
 				B31C9F1619858F3B00A51450 /* Products */,
@@ -97,6 +94,7 @@
 		B31C9F1819858F3B00A51450 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3841FF41985993D008D0F2C /* LocalAuthentication.framework */,
 				B31C9F1919858F3B00A51450 /* Info.plist */,
 				B31C9F1A19858F3B00A51450 /* main.m */,
 			);
@@ -290,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -340,6 +338,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Cliff/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -354,6 +353,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Cliff/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

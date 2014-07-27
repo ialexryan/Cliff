@@ -45,6 +45,8 @@
 }
 
 - (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application{
+    [self.window.rootViewController presentViewController:nil animated:NO completion:nil];
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"deviceUnlockedWithAuthentication" object:nil];
     
 }
