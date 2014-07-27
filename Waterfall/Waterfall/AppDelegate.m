@@ -28,12 +28,18 @@
 
 }
 
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
 
 - (IBAction)addNewDevice:(id)sender {
+
+    self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    
+    [NSApp activateIgnoringOtherApps:YES];
     [self.window makeKeyAndOrderFront:sender];
+    [self.window setLevel: NSFloatingWindowLevel];
 }
 
 - (IBAction)quitPress:(id)sender {
