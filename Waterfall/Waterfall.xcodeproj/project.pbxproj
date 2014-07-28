@@ -398,6 +398,7 @@
 				B36651CD1985B03C009FAD1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B36651CE1985B03C009FAD1C /* Build configuration list for PBXNativeTarget "WaterfallTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +407,7 @@
 				B36651D01985B03C009FAD1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

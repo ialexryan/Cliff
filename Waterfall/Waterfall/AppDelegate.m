@@ -33,9 +33,8 @@
     // Insert code here to tear down your application
 }
 
-- (IBAction)addNewDevice:(id)sender {
-
-    self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+- (IBAction)addNewDevice:(id)sender
+{
     
     [NSApp activateIgnoringOtherApps:YES];
     [self.window makeKeyAndOrderFront:sender];
