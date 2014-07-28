@@ -44,11 +44,11 @@
 }
 
 - (void)setStoredPassword:(NSString *)password {
-    [SSKeychain setPassword:password forService:@"Waterfall" account:@"Waterfall"];
+    [SSKeychain setPassword:password forService:@"Waterfall" account:NSUserName()];
 }
 
 - (NSString *)getStoredPassword {
-    return [SSKeychain passwordForService:@"Waterfall" account:@"Waterfall"];
+    return [SSKeychain passwordForService:@"Waterfall" account:NSUserName()];
 }
 
 - (void)unlockComputer {
