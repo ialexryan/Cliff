@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SSKeychain.h"
 
 @interface AppDelegate ()
 
@@ -40,6 +41,22 @@
     [NSApp activateIgnoringOtherApps:YES];
     [self.window makeKeyAndOrderFront:sender];
     [self.window setLevel: NSFloatingWindowLevel];
+}
+
+- (void)setStoredPassword:(NSString *)password {
+    [SSKeychain setPassword:password forService:@"Waterfall" account:@"Waterfall"];
+}
+
+- (NSString *)getStoredPassword {
+    return [SSKeychain passwordForService:@"Waterfall" account:@"Waterfall"];
+}
+
+- (void)unlockComputer {
+    NSString *password = [self getStoredPassword];
+    NSString *scriptString = [NSString stringWithFormat:@"tell application \"System Events\" to keystroke \"a\" using command down\ntell application \"System Events\" to keystroke \"%@\"\ntell application \"System Events\" to keystroke return", password];
+    sleep(7);
+    NSAppleScript *script = [[NSAppleScript alloc] initWithSource:scriptString];
+    [script executeAndReturnError:nil];
 }
 
 - (IBAction)quitPress:(id)sender {
