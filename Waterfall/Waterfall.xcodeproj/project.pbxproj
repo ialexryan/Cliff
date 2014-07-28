@@ -90,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				B36657A91985E524003CECB6 /* CoreBluetooth.framework */,
-				B34FCD881985DD49008F2514 /* SSKeychain */
+				B34FCD881985DD49008F2514 /* SSKeychain */,
 				B34FCD861985DCDF008F2514 /* Security.framework */,
 				B36651B01985B03B009FAD1C /* Waterfall */,
 				B36651C41985B03C009FAD1C /* WaterfallTests */,
