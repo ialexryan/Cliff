@@ -15,6 +15,8 @@
 @property NSWindowController *pairController;
 @property CBCentralManager *manager;
 
+@property NSMutableArray *connectedPeripherals;
+
 @property (nonatomic) BOOL shouldBeScanning;
 
 @end
@@ -25,6 +27,9 @@
             
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    
+    // Ivars
+    _connectedPeripherals = [NSMutableArray array];
     
     // Status Bar
     _statusItem = [[NSStatusBar systemStatusBar]statusItemWithLength:NSVariableStatusItemLength];
@@ -55,6 +60,7 @@
 -(void)applicationActivateNotification:(NSNotification*)notification{
     if ([[notification.userInfo[@"NSWorkspaceApplicationKey"]bundleIdentifier] isEqualToString:@"com.apple.loginwindow"]) {
         [self lockScreenAppeared];
+#warning This happens right when the screen turns off, not when it turns back on. Fix this.
     }
 }
 
@@ -95,7 +101,7 @@
 
 -(void)updateScanningState{
     if (self.manager.state == CBCentralManagerStatePoweredOn){
-        if (self.shouldBeScanning) [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:kCliffServiceKey]] options:nil];
+        if (self.shouldBeScanning) [self.manager scanForPeripheralsWithServices:nil options:nil];
         else [self.manager stopScan];
     }
 }
@@ -105,6 +111,7 @@
 }
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+    [self.connectedPeripherals addObject:peripheral];
     [central connectPeripheral:peripheral options:nil];
 }
 

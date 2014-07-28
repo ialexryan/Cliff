@@ -9,9 +9,12 @@
 #import "ViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
+#define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
+
 @interface ViewController ()
 
 @property (nonatomic) BOOL recentlyAuthenticated;
+@property (nonatomic) CBPeripheralManager *manager;
 
 @end
 
@@ -26,6 +29,8 @@
     }];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receivedUnlockRequest) name:@"receivedUnlockRequest" object:nil];
+    
+    _manager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
 }
 
 -(void)receivedUnlockRequest{
@@ -72,6 +77,26 @@
 
 -(void)buttonPress:(UIButton*)sender{
 
+}
+
+#pragma mark - Core Bluetooth
+
+-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        [_manager addService:[[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:kCliffServiceKey] primary:YES]];
+
+        [peripheral startAdvertising:nil];
+    }
+    else [NSException raise:@"oh fuck" format:@"jaden can fix this"];
+
+}
+
+-(void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error{
+    
+}
+
+-(void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
+    
 }
 
 @end

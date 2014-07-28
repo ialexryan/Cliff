@@ -168,6 +168,11 @@
 					B31C9F1419858F3B00A51450 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = 4H5P3P832L;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B31C9F2A19858F3B00A51450 = {
 						CreatedOnToolsVersion = 6.0;
