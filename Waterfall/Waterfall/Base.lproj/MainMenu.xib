@@ -50,7 +50,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-273.5" y="99.5"/>
+            <point key="canvasLocation" x="12.5" y="16.5"/>
         </menu>
         <window title="Waterfall" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" closable="YES"/>
@@ -65,6 +65,7 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="opaque" value="NO"/>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="movableByWindowBackground" value="YES"/>
             </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="42" y="99"/>
         </window>
         <viewController id="YKr-CC-fqV"/>
     </objects>

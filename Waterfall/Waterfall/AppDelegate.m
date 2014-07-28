@@ -10,9 +10,9 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
 @property NSStatusItem *statusItem;
 @property (weak) IBOutlet NSMenu *statusMenu;
+@property NSWindowController *pairController;
 
 @end
 
@@ -35,10 +35,13 @@
 
 - (IBAction)addNewDevice:(id)sender
 {
-    
+    self.pairController = [[NSWindowController alloc]initWithWindowNibName:@"JGAddDeviceWindowController"];
     [NSApp activateIgnoringOtherApps:YES];
-    [self.window makeKeyAndOrderFront:sender];
-    [self.window setLevel: NSFloatingWindowLevel];
+    [self.pairController.window makeKeyAndOrderFront:sender];
+    [self.pairController.window setLevel: NSFloatingWindowLevel];
+    
+    NSLog(@"%@",[[NSHost currentHost] localizedName]);
+    
 }
 
 - (IBAction)quitPress:(id)sender {
