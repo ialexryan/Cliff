@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B34FCD871985DCDF008F2514 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34FCD861985DCDF008F2514 /* Security.framework */; };
+		B34FCD8F1985DD49008F2514 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = B34FCD891985DD49008F2514 /* SSKeychain.strings */; };
+		B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FCD8C1985DD49008F2514 /* SSKeychain.m */; };
+		B34FCD911985DD49008F2514 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FCD8E1985DD49008F2514 /* SSKeychainQuery.m */; };
 		B36651B41985B03B009FAD1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B36651B31985B03B009FAD1C /* main.m */; };
 		B36651B71985B03C009FAD1C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B36651B61985B03C009FAD1C /* AppDelegate.m */; };
 		B36651B91985B03C009FAD1C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B36651B81985B03C009FAD1C /* Images.xcassets */; };
@@ -28,6 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B34FCD861985DCDF008F2514 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B34FCD8A1985DD49008F2514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		B34FCD8B1985DD49008F2514 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		B34FCD8C1985DD49008F2514 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		B34FCD8D1985DD49008F2514 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		B34FCD8E1985DD49008F2514 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		B36651AE1985B03B009FAD1C /* Waterfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waterfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36651B21985B03B009FAD1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B36651B31985B03B009FAD1C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B36657AA1985E524003CECB6 /* CoreBluetooth.framework in Frameworks */,
+				B34FCD871985DCDF008F2514 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,10 +74,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B34FCD881985DD49008F2514 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				B34FCD891985DD49008F2514 /* SSKeychain.strings */,
+				B34FCD8B1985DD49008F2514 /* SSKeychain.h */,
+				B34FCD8C1985DD49008F2514 /* SSKeychain.m */,
+				B34FCD8D1985DD49008F2514 /* SSKeychainQuery.h */,
+				B34FCD8E1985DD49008F2514 /* SSKeychainQuery.m */,
+			);
+			path = SSKeychain;
+			sourceTree = "<group>";
+		};
 		B36651A51985B03B009FAD1C = {
 			isa = PBXGroup;
 			children = (
 				B36657A91985E524003CECB6 /* CoreBluetooth.framework */,
+				B34FCD881985DD49008F2514 /* SSKeychain */
+				B34FCD861985DCDF008F2514 /* Security.framework */,
 				B36651B01985B03B009FAD1C /* Waterfall */,
 				B36651C41985B03C009FAD1C /* WaterfallTests */,
 				B36651AF1985B03B009FAD1C /* Products */,
@@ -206,6 +231,7 @@
 				B36657A81985DC46003CECB6 /* JGAddDeviceWindowController.xib in Resources */,
 				B36651B91985B03C009FAD1C /* Images.xcassets in Resources */,
 				B36651BC1985B03C009FAD1C /* MainMenu.xib in Resources */,
+				B34FCD8F1985DD49008F2514 /* SSKeychain.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B36657A71985DC46003CECB6 /* JGAddDeviceWindowController.m in Sources */,
+				B34FCD911985DD49008F2514 /* SSKeychainQuery.m in Sources */,
 				B36651B71985B03C009FAD1C /* AppDelegate.m in Sources */,
 				B36651B41985B03B009FAD1C /* main.m in Sources */,
+				B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +276,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B34FCD891985DD49008F2514 /* SSKeychain.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B34FCD8A1985DD49008F2514 /* en */,
+			);
+			name = SSKeychain.strings;
+			sourceTree = "<group>";
+		};
 		B36651BA1985B03C009FAD1C /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
