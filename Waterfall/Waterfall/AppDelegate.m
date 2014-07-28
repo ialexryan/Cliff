@@ -19,6 +19,8 @@
 
 @property (nonatomic) BOOL shouldBeScanning;
 
+@property (nonatomic) BOOL lockScreenVisible;
+
 @end
 
 #define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
@@ -38,6 +40,7 @@
     [_statusItem setMenu:self.statusMenu];
     
     // Notification Center
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self selector: @selector(screenWakeNotification:) name: NSWorkspaceScreensDidWakeNotification object: NULL];
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self selector: @selector(applicationDeactivateNotification:) name: NSWorkspaceDidDeactivateApplicationNotification object: NULL];
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self selector: @selector(applicationActivateNotification:) name: NSWorkspaceDidActivateApplicationNotification object: NULL];
 
@@ -51,16 +54,22 @@
 }
 
 #pragma mark - Handle Locks Screen Events
--(void)applicationDeactivateNotification:(NSNotification*)notification{
-    if ([[notification.userInfo[@"NSWorkspaceApplicationKey"]bundleIdentifier] isEqualToString:@"com.apple.loginwindow"]) {
-        [self lockScreenDismissed];
-    }
-}
+
 
 -(void)applicationActivateNotification:(NSNotification*)notification{
     if ([[notification.userInfo[@"NSWorkspaceApplicationKey"]bundleIdentifier] isEqualToString:@"com.apple.loginwindow"]) {
-        [self lockScreenAppeared];
-#warning This happens right when the screen turns off, not when it turns back on. Fix this.
+        self.lockScreenVisible = YES;
+    }
+}
+
+-(void)screenWakeNotification:(NSNotification*)notification{
+    if (self.lockScreenVisible) [self lockScreenAppeared];
+}
+
+-(void)applicationDeactivateNotification:(NSNotification*)notification{
+    if ([[notification.userInfo[@"NSWorkspaceApplicationKey"]bundleIdentifier] isEqualToString:@"com.apple.loginwindow"]) {
+        self.lockScreenVisible = NO;
+        [self lockScreenDismissed];
     }
 }
 
