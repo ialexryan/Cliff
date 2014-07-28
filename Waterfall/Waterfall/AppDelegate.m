@@ -90,18 +90,7 @@
     [self updateScanningState];
 }
 
-#pragma mark - Handle UI Events
-
-- (IBAction)addNewDevice:(id)sender
-{
-    self.pairController = [[NSWindowController alloc]initWithWindowNibName:@"JGAddDeviceWindowController"];
-    [NSApp activateIgnoringOtherApps:YES];
-    [self.pairController.window makeKeyAndOrderFront:sender];
-    [self.pairController.window setLevel: NSFloatingWindowLevel];
-    
-    NSLog(@"%@",[[NSHost currentHost] localizedName]);
-    
-}
+#pragma mark - Handle passwords and unlocking
 
 - (void)setStoredPassword:(NSString *)password {
     [SSKeychain setPassword:password forService:@"Waterfall" account:NSUserName()];
@@ -117,6 +106,19 @@
     sleep(7);
     NSAppleScript *script = [[NSAppleScript alloc] initWithSource:scriptString];
     [script executeAndReturnError:nil];
+}
+
+#pragma mark - Handle UI Events
+
+- (IBAction)addNewDevice:(id)sender
+{
+    self.pairController = [[NSWindowController alloc]initWithWindowNibName:@"JGAddDeviceWindowController"];
+    [NSApp activateIgnoringOtherApps:YES];
+    [self.pairController.window makeKeyAndOrderFront:sender];
+    [self.pairController.window setLevel: NSFloatingWindowLevel];
+    
+    NSLog(@"%@",[[NSHost currentHost] localizedName]);
+    
 }
 
 - (IBAction)quitPress:(id)sender {
