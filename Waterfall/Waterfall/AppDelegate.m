@@ -15,7 +15,11 @@
 @property NSWindowController *pairController;
 @property CBCentralManager *manager;
 
+@property (nonatomic) BOOL shouldBeScanning;
+
 @end
+
+#define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
 
 @implementation AppDelegate
             
@@ -55,12 +59,19 @@
 }
 
 -(void)lockScreenAppeared{
-
-    NSLog(@"HI");
+    self.shouldBeScanning = YES;
 }
 
 -(void)lockScreenDismissed{
-    NSLog(@"BYE");
+    self.shouldBeScanning = NO;
+}
+
+#pragma mark - Setters
+
+-(void)setShouldBeScanning:(BOOL)shouldBeScanning{
+    _shouldBeScanning = shouldBeScanning;
+    
+    [self updateScanningState];
 }
 
 #pragma mark - Handle UI Events
@@ -82,13 +93,22 @@
 
 #pragma mark - Core Bluetooth
 
--(void)centralManagerDidUpdateState:(CBCentralManager *)central{
-    if (central.state == CBCentralManagerStatePoweredOn) {
-        [central scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"98FE13EF-0596-4654-998F-FF3E1E207941"]] options:nil];
+-(void)updateScanningState{
+    if (self.manager.state == CBCentralManagerStatePoweredOn){
+        if (self.shouldBeScanning) [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:kCliffServiceKey]] options:nil];
+        else [self.manager stopScan];
     }
 }
 
+-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
+    [self updateScanningState];
+}
+
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+    [central connectPeripheral:peripheral options:nil];
+}
+
+-(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
     
 }
 
