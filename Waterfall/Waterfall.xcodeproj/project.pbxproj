@@ -14,6 +14,7 @@
 		B36651C81985B03C009FAD1C /* WaterfallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B36651C71985B03C009FAD1C /* WaterfallTests.m */; };
 		B36657A71985DC46003CECB6 /* JGAddDeviceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */; };
 		B36657A81985DC46003CECB6 /* JGAddDeviceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B36657A61985DC46003CECB6 /* JGAddDeviceWindowController.xib */; };
+		B36657AA1985E524003CECB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36657A91985E524003CECB6 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		B36657A41985DC46003CECB6 /* JGAddDeviceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGAddDeviceWindowController.h; sourceTree = "<group>"; };
 		B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGAddDeviceWindowController.m; sourceTree = "<group>"; };
 		B36657A61985DC46003CECB6 /* JGAddDeviceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JGAddDeviceWindowController.xib; sourceTree = "<group>"; };
+		B36657A91985E524003CECB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B36657AA1985E524003CECB6 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		B36651A51985B03B009FAD1C = {
 			isa = PBXGroup;
 			children = (
+				B36657A91985E524003CECB6 /* CoreBluetooth.framework */,
 				B36651B01985B03B009FAD1C /* Waterfall */,
 				B36651C41985B03C009FAD1C /* WaterfallTests */,
 				B36651AF1985B03B009FAD1C /* Products */,
