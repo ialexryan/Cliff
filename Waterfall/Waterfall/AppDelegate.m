@@ -100,6 +100,23 @@
     return [SSKeychain passwordForService:@"Waterfall" account:NSUserName()];
 }
 
+// Backup plan if AppleScript ever stops working, courtesy of Virindh Borra
+//-(void)unlockComupter
+//{
+//  NSString *someString = @“usersPasswordHere";
+//  
+//  for (int i =0; i < someString.length; i++)
+//  {
+//    unichar currentchar = [someString characterAtIndex:i];
+//    CGEventRef e = CGEventCreateKeyboardEvent(NULL, 0, true);
+//    CGEventKeyboardSetUnicodeString(e, 1, &currentchar);
+//    CGEventPost(kCGHIDEventTap, e);
+//  }
+//  CGEventRef enterKey = CGEventCreateKeyboardEvent(NULL, 36, true);//KeyboardEvent(NULL  )36  true);
+//  CGEventPost(kCGHIDEventTap, enterKey);
+//  
+//}
+
 - (void)unlockComputer {
     NSString *password = [self getStoredPassword];
     NSString *scriptString = [NSString stringWithFormat:@"tell application \"System Events\" to keystroke \"a\" using command down\ntell application \"System Events\" to keystroke \"%@\"\ntell application \"System Events\" to keystroke return", password];
@@ -107,6 +124,13 @@
     NSAppleScript *script = [[NSAppleScript alloc] initWithSource:scriptString];
     [script executeAndReturnError:nil];
 }
+
+// We may decide we want this someday
+//-(void)lockComputer
+//{
+//  NSAppleScript *script = [[NSAppleScript alloc] initWithSource:@"tell application \"System Events\" to sleep"];
+//  [script executeAndReturnError:nil];
+//}
 
 #pragma mark - Handle UI Events
 
