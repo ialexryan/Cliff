@@ -80,6 +80,17 @@
 
 -(void)lockScreenDismissed{
     self.shouldBeScanning = NO;
+    [self displayNotificationWithTitle:@"<computer name> unlocked" subtitle:nil body:@"Fingerprint authenticated from <phone name>"];
+}
+
+#pragma mark - Notifications
+
+- (void)displayNotificationWithTitle:(NSString *)title subtitle:(NSString *)subtitle body:(NSString *)body {
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    [notification setTitle:title];
+    [notification setSubtitle:subtitle];
+    [notification setInformativeText:body];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
 }
 
 #pragma mark - Setters
