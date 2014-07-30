@@ -15,6 +15,7 @@
 
 @property (nonatomic) BOOL recentlyAuthenticated;
 @property (nonatomic) CBPeripheralManager *manager;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end
 
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+  
     [[NSNotificationCenter defaultCenter]addObserverForName:@"deviceUnlockedWithAuthentication" object:nil queue:nil usingBlock:^(NSNotification *note) {
         self.recentlyAuthenticated = YES;
     }];
@@ -63,11 +64,11 @@
 }
 
 -(void)handleTouchIDError:(NSError *)errorCode {
-    NSLog(@"%@", errorCode);
+    self.statusLabel.text = errorCode.description;
 }
 
 -(void)tellComputerToUnlock{
-    NSLog(@"The computer is now unlocked :D");
+    self.statusLabel.text = @"Unlocking computer...";
 }
 
 - (void)didReceiveMemoryWarning {
