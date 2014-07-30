@@ -23,19 +23,6 @@
 
 @implementation ViewController
 
-@synthesize userAllowsLockScreenAuth;
-
-- (BOOL)userAllowsLockScreenAuth
-{
-    NSNumber *value = [[NSUserDefaults standardUserDefaults] objectForKey:@"userAllowsLockScreenAuth"];
-    return value ? value.boolValue : kDefaultUserAllowsLockScreenAuth;
-}
-
-- (void)setUserAllowsLockScreenAuth:(BOOL)value
-{
-    [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"userAllowsLockScreenAuth"];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"%i", self.userAllowsLockScreenAuth);
@@ -94,6 +81,19 @@
 
 -(void)buttonPress:(UIButton*)sender{
 
+}
+
+#pragma mark - Setters & Getters
+
+- (BOOL)userAllowsLockScreenAuth
+{
+  NSNumber *value = [[NSUserDefaults standardUserDefaults] objectForKey:@"userAllowsLockScreenAuth"];
+  return value ? value.boolValue : kDefaultUserAllowsLockScreenAuth;
+}
+
+- (void)setUserAllowsLockScreenAuth:(BOOL)value
+{
+  [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"userAllowsLockScreenAuth"];
 }
 
 #pragma mark - Core Bluetooth
