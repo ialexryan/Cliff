@@ -11,19 +11,36 @@
 
 #define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
 
+#define kDefaultUserAllowsLockScreenAuth 1
+
 @interface ViewController ()
 
 @property (nonatomic) BOOL recentlyAuthenticated;
+@property (nonatomic) BOOL userAllowsLockScreenAuth;
 @property (nonatomic) CBPeripheralManager *manager;
 
 @end
 
 @implementation ViewController
 
+@synthesize userAllowsLockScreenAuth;
+
+- (BOOL)userAllowsLockScreenAuth
+{
+    NSNumber *value = [[NSUserDefaults standardUserDefaults] objectForKey:@"userAllowsLockScreenAuth"];
+    return value ? value.boolValue : kDefaultUserAllowsLockScreenAuth;
+}
+
+- (void)setUserAllowsLockScreenAuth:(BOOL)value
+{
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"userAllowsLockScreenAuth"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%i", self.userAllowsLockScreenAuth);
     // Do any additional setup after loading the view, typically from a nib.
-    
+
     [[NSNotificationCenter defaultCenter]addObserverForName:@"deviceUnlockedWithAuthentication" object:nil queue:nil usingBlock:^(NSNotification *note) {
         self.recentlyAuthenticated = YES;
     }];
@@ -40,8 +57,8 @@
     // Check to make sure the user still has TouchID
     if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
         
-        // Skip TouchID if they unlocked recently
-        if (self.recentlyAuthenticated) [self tellComputerToUnlock];
+        // Skip TouchID if they unlocked recently and allow this
+        if (self.recentlyAuthenticated && self.userAllowsLockScreenAuth) [self tellComputerToUnlock];
         
         // Authenticate with TouchID
         else {
