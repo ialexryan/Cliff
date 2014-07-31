@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B31C45D51988CD7A000062C3 /* JGKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C45D41988CD7A000062C3 /* JGKeyManager.m */; };
+		B31C45D81988CDAB000062C3 /* JGKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C45D71988CDAB000062C3 /* JGKey.m */; };
+		B31C45DB1988D2BE000062C3 /* NSUUID+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */; };
+		B31C45DE1988D443000062C3 /* JGPublicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C45DD1988D443000062C3 /* JGPublicKey.m */; };
+		B31C45E11988D44E000062C3 /* JGPrivateKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C45E01988D44E000062C3 /* JGPrivateKey.m */; };
 		B34FCD871985DCDF008F2514 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34FCD861985DCDF008F2514 /* Security.framework */; };
 		B34FCD8F1985DD49008F2514 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = B34FCD891985DD49008F2514 /* SSKeychain.strings */; };
 		B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FCD8C1985DD49008F2514 /* SSKeychain.m */; };
@@ -32,6 +37,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B31C45D31988CD7A000062C3 /* JGKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGKeyManager.h; sourceTree = "<group>"; };
+		B31C45D41988CD7A000062C3 /* JGKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGKeyManager.m; sourceTree = "<group>"; };
+		B31C45D61988CDAB000062C3 /* JGKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGKey.h; sourceTree = "<group>"; };
+		B31C45D71988CDAB000062C3 /* JGKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGKey.m; sourceTree = "<group>"; };
+		B31C45D91988D2BE000062C3 /* NSUUID+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUUID+Data.h"; sourceTree = "<group>"; };
+		B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUUID+Data.m"; sourceTree = "<group>"; };
+		B31C45DC1988D443000062C3 /* JGPublicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPublicKey.h; sourceTree = "<group>"; };
+		B31C45DD1988D443000062C3 /* JGPublicKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPublicKey.m; sourceTree = "<group>"; };
+		B31C45DF1988D44E000062C3 /* JGPrivateKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPrivateKey.h; sourceTree = SOURCE_ROOT; };
+		B31C45E01988D44E000062C3 /* JGPrivateKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPrivateKey.m; sourceTree = SOURCE_ROOT; };
 		B34FCD861985DCDF008F2514 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B34FCD8A1985DD49008F2514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
 		B34FCD8B1985DD49008F2514 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
@@ -114,6 +129,16 @@
 				B36651B61985B03C009FAD1C /* AppDelegate.m */,
 				B36657A41985DC46003CECB6 /* JGAddDeviceWindowController.h */,
 				B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */,
+				B31C45D31988CD7A000062C3 /* JGKeyManager.h */,
+				B31C45D41988CD7A000062C3 /* JGKeyManager.m */,
+				B31C45D61988CDAB000062C3 /* JGKey.h */,
+				B31C45D71988CDAB000062C3 /* JGKey.m */,
+				B31C45DC1988D443000062C3 /* JGPublicKey.h */,
+				B31C45DD1988D443000062C3 /* JGPublicKey.m */,
+				B31C45DF1988D44E000062C3 /* JGPrivateKey.h */,
+				B31C45E01988D44E000062C3 /* JGPrivateKey.m */,
+				B31C45D91988D2BE000062C3 /* NSUUID+Data.h */,
+				B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */,
 				B36657A61985DC46003CECB6 /* JGAddDeviceWindowController.xib */,
 				B36651B81985B03C009FAD1C /* Images.xcassets */,
 				B36651BA1985B03C009FAD1C /* MainMenu.xib */,
@@ -251,8 +276,13 @@
 			files = (
 				B36657A71985DC46003CECB6 /* JGAddDeviceWindowController.m in Sources */,
 				B34FCD911985DD49008F2514 /* SSKeychainQuery.m in Sources */,
+				B31C45E11988D44E000062C3 /* JGPrivateKey.m in Sources */,
 				B36651B71985B03C009FAD1C /* AppDelegate.m in Sources */,
+				B31C45DB1988D2BE000062C3 /* NSUUID+Data.m in Sources */,
 				B36651B41985B03B009FAD1C /* main.m in Sources */,
+				B31C45D51988CD7A000062C3 /* JGKeyManager.m in Sources */,
+				B31C45DE1988D443000062C3 /* JGPublicKey.m in Sources */,
+				B31C45D81988CDAB000062C3 /* JGKey.m in Sources */,
 				B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

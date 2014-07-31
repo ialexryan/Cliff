@@ -25,6 +25,7 @@
 @end
 
 #define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
+#define kCliffCharacteristicKey @"ADC03A17-C62A-4826-9BE6-8126B131DE03`"
 
 @implementation AppDelegate
             
@@ -140,9 +141,6 @@
     [NSApp activateIgnoringOtherApps:YES];
     [self.pairController.window makeKeyAndOrderFront:sender];
     [self.pairController.window setLevel: NSFloatingWindowLevel];
-    
-    NSLog(@"%@",[[NSHost currentHost] localizedName]);
-    
 }
 
 - (IBAction)quitPress:(id)sender {
@@ -153,7 +151,7 @@
 
 -(void)updateScanningState{
     if (self.manager.state == CBCentralManagerStatePoweredOn){
-        if (self.shouldBeScanning) [self.manager scanForPeripheralsWithServices:nil options:nil];
+        if (self.shouldBeScanning) [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:kCliffServiceKey]] options:nil];
         else [self.manager stopScan];
     }
 }

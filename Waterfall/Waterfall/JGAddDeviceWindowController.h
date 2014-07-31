@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
 
-@interface JGAddDeviceWindowController : NSWindowController
+@interface JGAddDeviceWindowController : NSWindowController <MCNearbyServiceBrowserDelegate, MCSessionDelegate>
 
 @end
