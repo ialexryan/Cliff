@@ -11,10 +11,12 @@
 
 #define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
 #define kCliffCharacteristicKey @"ADC03A17-C62A-4826-9BE6-8126B131DE03"
+#define kDefaultUserAllowsLockScreenAuth 1
 
 @interface LoginViewController ()
 
 @property (nonatomic) BOOL recentlyAuthenticated;
+@property (nonatomic) BOOL userAllowsLockScreenAuth;
 @property (nonatomic) CBPeripheralManager *manager;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
@@ -24,14 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%i", self.userAllowsLockScreenAuth);
     // Do any additional setup after loading the view, typically from a nib.
-  
+
     [[NSNotificationCenter defaultCenter]addObserverForName:@"deviceUnlockedWithAuthentication" object:nil queue:nil usingBlock:^(NSNotification *note) {
         self.recentlyAuthenticated = YES;
     }];
-    
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receivedUnlockRequest) name:@"receivedUnlockRequest" object:nil];
-    
+
     _manager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
 }
 
@@ -41,17 +44,17 @@
 
     // Check to make sure the user still has TouchID
     if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
-        
-        // Skip TouchID if they unlocked recently
-        if (self.recentlyAuthenticated) [self tellComputerToUnlock];
-        
+
+        // Skip TouchID if they unlocked recently and allow this
+        if (self.recentlyAuthenticated && self.userAllowsLockScreenAuth) [self tellComputerToUnlock];
+
         // Authenticate with TouchID
         else {
-            
+
             NSString *myLocalizedReasonString = @"Computer Name";
-            
+
             [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:myLocalizedReasonString reply:^(BOOL success, NSError *error) {
-                
+
                 if (success) [self tellComputerToUnlock];
                 else [self handleTouchIDError:error];
             }];
@@ -60,7 +63,7 @@
     else {
         [self handleTouchIDError:authError];
     }
-    
+
     self.recentlyAuthenticated = NO;
 }
 
@@ -81,18 +84,31 @@
 
 }
 
+#pragma mark - Setters & Getters
+
+- (BOOL)userAllowsLockScreenAuth
+{
+  NSNumber *value = [[NSUserDefaults standardUserDefaults] objectForKey:@"userAllowsLockScreenAuth"];
+  return value ? value.boolValue : kDefaultUserAllowsLockScreenAuth;
+}
+
+- (void)setUserAllowsLockScreenAuth:(BOOL)value
+{
+  [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"userAllowsLockScreenAuth"];
+}
+
 #pragma mark - Core Bluetooth
 
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-        
+
         // Add Service
         CBUUID *service = [CBUUID UUIDWithString:kCliffServiceKey];
         [_manager addService:[[CBMutableService alloc]initWithType:service primary:YES]];
-        
+
         // Add Characteristic
         CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:kCliffCharacteristicKey] properties:CBCharacteristicPropertyWrite | CBCharacteristicPropertyNotify value:nil permissions:0];
-        
+
         [peripheral startAdvertising:@{CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:kCliffServiceKey]]}];
     }
     else [NSException raise:@"oh fuck" format:@"jaden can fix this"];
@@ -104,7 +120,7 @@
 }
 
 -(void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
-    
+
 }
 
 @end
