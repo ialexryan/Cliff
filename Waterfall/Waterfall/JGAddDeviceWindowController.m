@@ -7,7 +7,7 @@
 //
 
 #import "JGAddDeviceWindowController.h"
-#import <Security/Security.h>
+#import "JGSecurityKey.h"
 
 #define kCliffMultipeerServiceName @"JadenGCliffGo"
 
@@ -79,9 +79,10 @@
 }
 
 -(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"publicKey"];
-#warning Fuck the NSA woot woot we should make this more secure or some shit
+    NSDictionary *received = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
+    JGPublicSecurityKey *publicKey = [JGPublicSecurityKey publicKeyWithBytes:received[@"publicKey"]];
+    [publicKey saveKeyToKeychainWithIdentifier:received[@"uuid"]];
 }
 
 -(void)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL))certificateHandler{
