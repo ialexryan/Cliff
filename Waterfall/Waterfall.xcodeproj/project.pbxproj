@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B31C45DB1988D2BE000062C3 /* NSUUID+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */; };
 		B34FCD871985DCDF008F2514 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34FCD861985DCDF008F2514 /* Security.framework */; };
 		B34FCD8F1985DD49008F2514 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = B34FCD891985DD49008F2514 /* SSKeychain.strings */; };
 		B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FCD8C1985DD49008F2514 /* SSKeychain.m */; };
@@ -19,6 +20,9 @@
 		B36657A71985DC46003CECB6 /* JGAddDeviceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */; };
 		B36657A81985DC46003CECB6 /* JGAddDeviceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B36657A61985DC46003CECB6 /* JGAddDeviceWindowController.xib */; };
 		B36657AA1985E524003CECB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36657A91985E524003CECB6 /* CoreBluetooth.framework */; };
+		B3C84457198DB27D00DCBEE6 /* JGPeerKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C84456198DB27D00DCBEE6 /* JGPeerKeychain.m */; };
+		B3C8445A198DB61E00DCBEE6 /* JGSecurityKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C84459198DB61E00DCBEE6 /* JGSecurityKey.m */; };
+		B3C8445D198DC17500DCBEE6 /* JGPeerCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B31C45D91988D2BE000062C3 /* NSUUID+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUUID+Data.h"; sourceTree = "<group>"; };
+		B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUUID+Data.m"; sourceTree = "<group>"; };
 		B34FCD861985DCDF008F2514 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B34FCD8A1985DD49008F2514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
 		B34FCD8B1985DD49008F2514 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
@@ -52,6 +58,12 @@
 		B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGAddDeviceWindowController.m; sourceTree = "<group>"; };
 		B36657A61985DC46003CECB6 /* JGAddDeviceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JGAddDeviceWindowController.xib; sourceTree = "<group>"; };
 		B36657A91985E524003CECB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B3C84455198DB27D00DCBEE6 /* JGPeerKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPeerKeychain.h; sourceTree = "<group>"; };
+		B3C84456198DB27D00DCBEE6 /* JGPeerKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPeerKeychain.m; sourceTree = "<group>"; };
+		B3C84458198DB61E00DCBEE6 /* JGSecurityKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSecurityKey.h; sourceTree = "<group>"; };
+		B3C84459198DB61E00DCBEE6 /* JGSecurityKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSecurityKey.m; sourceTree = "<group>"; };
+		B3C8445B198DC17500DCBEE6 /* JGPeerCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPeerCommunicator.h; sourceTree = "<group>"; };
+		B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPeerCommunicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +126,9 @@
 				B36651B61985B03C009FAD1C /* AppDelegate.m */,
 				B36657A41985DC46003CECB6 /* JGAddDeviceWindowController.h */,
 				B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */,
+				B3C8445E198DC19B00DCBEE6 /* Security */,
+				B31C45D91988D2BE000062C3 /* NSUUID+Data.h */,
+				B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */,
 				B36657A61985DC46003CECB6 /* JGAddDeviceWindowController.xib */,
 				B36651B81985B03C009FAD1C /* Images.xcassets */,
 				B36651BA1985B03C009FAD1C /* MainMenu.xib */,
@@ -146,6 +161,19 @@
 				B36651C61985B03C009FAD1C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3C8445E198DC19B00DCBEE6 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				B3C8445B198DC17500DCBEE6 /* JGPeerCommunicator.h */,
+				B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */,
+				B3C84455198DB27D00DCBEE6 /* JGPeerKeychain.h */,
+				B3C84456198DB27D00DCBEE6 /* JGPeerKeychain.m */,
+				B3C84458198DB61E00DCBEE6 /* JGSecurityKey.h */,
+				B3C84459198DB61E00DCBEE6 /* JGSecurityKey.m */,
+			);
+			name = Security;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +280,10 @@
 				B36657A71985DC46003CECB6 /* JGAddDeviceWindowController.m in Sources */,
 				B34FCD911985DD49008F2514 /* SSKeychainQuery.m in Sources */,
 				B36651B71985B03C009FAD1C /* AppDelegate.m in Sources */,
+				B3C84457198DB27D00DCBEE6 /* JGPeerKeychain.m in Sources */,
+				B3C8445A198DB61E00DCBEE6 /* JGSecurityKey.m in Sources */,
+				B3C8445D198DC17500DCBEE6 /* JGPeerCommunicator.m in Sources */,
+				B31C45DB1988D2BE000062C3 /* NSUUID+Data.m in Sources */,
 				B36651B41985B03B009FAD1C /* main.m in Sources */,
 				B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */,
 			);

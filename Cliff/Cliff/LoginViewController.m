@@ -6,19 +6,20 @@
 //  Copyright (c) 2014 Jaden Geller. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
 #define kCliffServiceKey @"98FE13EF-0596-4654-998F-FF3E1E207941"
+#define kCliffCharacteristicKey @"ADC03A17-C62A-4826-9BE6-8126B131DE03"
 
-@interface ViewController ()
+@interface LoginViewController ()
 
 @property (nonatomic) BOOL recentlyAuthenticated;
 @property (nonatomic) CBPeripheralManager *manager;
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,16 +84,22 @@
 
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-        [_manager addService:[[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:kCliffServiceKey] primary:YES]];
-
-        [peripheral startAdvertising:nil];
+        
+        // Add Service
+        CBUUID *service = [CBUUID UUIDWithString:kCliffServiceKey];
+        [_manager addService:[[CBMutableService alloc]initWithType:service primary:YES]];
+        
+        // Add Characteristic
+        CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:kCliffCharacteristicKey] properties:CBCharacteristicPropertyWrite | CBCharacteristicPropertyNotify value:nil permissions:0];
+        
+        [peripheral startAdvertising:@{CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:kCliffServiceKey]]}];
     }
     else [NSException raise:@"oh fuck" format:@"jaden can fix this"];
 
 }
 
 -(void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error{
-    
+    NSLog(@"%@",service);
 }
 
 -(void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
