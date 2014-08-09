@@ -6,27 +6,38 @@
 //  Copyright (c) 2014 Jaden Geller. All rights reserved.
 //
 
-#import "JGPeerKeychain.h"
+#import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
-// Note: compatibility also requires us to specify an action for when it is incompatible
-//       action should probably either be update app or re-add trust
+#import "JGTransactionIdentifier.h"
 
-/*
- HEY, I WANT ANYBODY WHO TRUSTS ME = INITIAL_SENDER TO DO AN ACTION
- SEND ACTION & INITIAL_SENDER ID
- 
- HELLO, LET ME CHECK IF I TRUST THE MESSAGE I JUST GOT
- SEND ACTION & INITIAL_SENDER_ID & CHALLEGE
- 
- COOL, LET ME SHOW YOU THAT YOU KNOW ME
- 
- */
+@class JGPeerMessage, JGPeerKeychain;
 
-// LIMIT = 53 bytes
-// 1: COMPATIBILITY (1) + SENDER (16) + MESSAGE (4) = 21 bytes
-// 1: COMPATIBILITY (1) + SENDER (16) + MESSAGE (4) = 21 bytes
-// 1: COMPATIBILITY (1) + SENDER (16) + MESSAGE (4) = 21 bytes
+@protocol JGPeerCommunicatorDelegate <NSObject>
 
-@interface JGPeerCommunicator : JGPeerKeychain
+-(void)didConnectToTrustedPeer:(NSUUID*)trustedPeer;
+-(void)didDisconnectFromTrustedPeer:(NSUUID*)trustedPeer;
+-(void)didRecieveData:(NSData*)data fromTrustedPeer:(NSUUID*)trustedPeer;
+
+@end
+
+@interface JGPeerCommunicator : NSObject
+
+@property (nonatomic, readonly) JGPeerKeychain *keychain;
+@property (nonatomic) BOOL enabled;
+
+@property (nonatomic, weak) id<JGPeerCommunicatorDelegate> delegate;
+
+-(void)sendData:(NSData*)data toTrustedPeer:(NSUUID*)trustedPeer encrypted:(BOOL)encrypted;
++(instancetype)peerCommunicatorWithKeychain:(JGPeerKeychain*)keychain;
+-(instancetype)initWithKeychain:(JGPeerKeychain*)keychain NS_DESIGNATED_INITIALIZER;
+
+@end
+
+@interface JGCentralPeerCommunicator : JGPeerCommunicator <CBCentralManagerDelegate, CBPeripheralDelegate>
+
+@end
+
+@interface JGPeripheralPeerCommunicator : JGPeerCommunicator <CBPeripheralManagerDelegate>
 
 @end

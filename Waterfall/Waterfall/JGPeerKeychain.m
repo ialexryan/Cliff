@@ -44,23 +44,6 @@
     return YES;
 }
 
-+(instancetype)defaultPeerKeychain{
-    static JGPeerKeychain *sharedInstance = nil;
-    
-    dispatch_once_t once;
-    dispatch_once(&once, ^{
-        sharedInstance = [self peerKeychainWithSaveDirectory:[self defaultSaveDirectory]];
-    });
-    
-    return sharedInstance;
-}
-
-+(NSURL*)defaultSaveDirectory{
-    NSString *documentDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    
-    return [NSURL URLWithString:[documentDirectory stringByAppendingPathComponent:@"keychain_metadata"]];
-}
-
 -(void)save{
     [[NSKeyedArchiver archivedDataWithRootObject:self] writeToURL:self.saveDirectory atomically:YES];
 }
@@ -98,7 +81,7 @@
     return [self initWithSaveDirectory:nil];
 }
 
--(NSArray*)peerIdentities{
+-(NSArray*)trustedPeerIdentnties{
     return self.peers.allKeys;
 }
 
@@ -106,6 +89,9 @@
     return (JGPublicSecurityKey*)self.peers[identity];
 }
 
+-(BOOL)isTrustedWithIdentity:(NSUUID*)identity{
+    return [self.peers objectForKey:identity] != nil;
+}
 -(void)trustPeerWithIdentity:(NSUUID*)identity key:(JGPublicSecurityKey*)key{
     [self.peers setObject:key forKey:identity];
 

@@ -15,7 +15,6 @@
 @interface LoginViewController ()
 
 @property (nonatomic) BOOL recentlyAuthenticated;
-@property (nonatomic) CBPeripheralManager *manager;
 
 @end
 
@@ -31,7 +30,6 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receivedUnlockRequest) name:@"receivedUnlockRequest" object:nil];
     
-    _manager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
 }
 
 -(void)receivedUnlockRequest{

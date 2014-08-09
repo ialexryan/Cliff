@@ -12,14 +12,15 @@
 
 @interface JGPeerKeychain : NSObject <NSSecureCoding>
 
-+(instancetype)defaultPeerKeychain;
 +(instancetype)peerKeychainWithSaveDirectory:(NSURL*)saveDirectory;
 
 @property (nonatomic, readonly) NSUUID *localIdentity;
 @property (nonatomic, readonly) JGSecurityKeyPair *localKeys;
 
-@property (nonatomic, readonly) NSArray *peerIdentities;
+@property (nonatomic, readonly) NSArray *trustedPeerIdentnties;
 -(JGPublicSecurityKey*)peerKeyWithIdentity:(NSUUID*)identity;
+
+-(BOOL)isTrustedWithIdentity:(NSUUID*)identity;
 
 -(void)trustPeerWithIdentity:(NSUUID*)identity key:(JGPublicSecurityKey*)key;
 -(void)forgetPeerWithIdentity:(NSUUID*)identity;

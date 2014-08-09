@@ -23,6 +23,9 @@
 		B3C84457198DB27D00DCBEE6 /* JGPeerKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C84456198DB27D00DCBEE6 /* JGPeerKeychain.m */; };
 		B3C8445A198DB61E00DCBEE6 /* JGSecurityKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C84459198DB61E00DCBEE6 /* JGSecurityKey.m */; };
 		B3C8445D198DC17500DCBEE6 /* JGPeerCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */; };
+		B3F4DF18198EC0520033FD3D /* JGTransactionIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F4DF17198EC0520033FD3D /* JGTransactionIdentifier.m */; };
+		B3F4DF1B198EF2BF0033FD3D /* JGPeerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F4DF1A198EF2BF0033FD3D /* JGPeerMessage.m */; };
+		B3F4DF1F198F0D410033FD3D /* JGUnlockCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F4DF1E198F0D410033FD3D /* JGUnlockCommunicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,12 @@
 		B3C84459198DB61E00DCBEE6 /* JGSecurityKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSecurityKey.m; sourceTree = "<group>"; };
 		B3C8445B198DC17500DCBEE6 /* JGPeerCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPeerCommunicator.h; sourceTree = "<group>"; };
 		B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPeerCommunicator.m; sourceTree = "<group>"; };
+		B3F4DF16198EC0520033FD3D /* JGTransactionIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGTransactionIdentifier.h; sourceTree = "<group>"; };
+		B3F4DF17198EC0520033FD3D /* JGTransactionIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGTransactionIdentifier.m; sourceTree = "<group>"; };
+		B3F4DF19198EF2BF0033FD3D /* JGPeerMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPeerMessage.h; sourceTree = "<group>"; };
+		B3F4DF1A198EF2BF0033FD3D /* JGPeerMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPeerMessage.m; sourceTree = "<group>"; };
+		B3F4DF1D198F0D410033FD3D /* JGUnlockCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGUnlockCommunicator.h; sourceTree = "<group>"; };
+		B3F4DF1E198F0D410033FD3D /* JGUnlockCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGUnlockCommunicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +135,7 @@
 				B36651B61985B03C009FAD1C /* AppDelegate.m */,
 				B36657A41985DC46003CECB6 /* JGAddDeviceWindowController.h */,
 				B36657A51985DC46003CECB6 /* JGAddDeviceWindowController.m */,
+				B3F4DF1C198EFBA00033FD3D /* Communication */,
 				B3C8445E198DC19B00DCBEE6 /* Security */,
 				B31C45D91988D2BE000062C3 /* NSUUID+Data.h */,
 				B31C45DA1988D2BE000062C3 /* NSUUID+Data.m */,
@@ -166,14 +176,27 @@
 		B3C8445E198DC19B00DCBEE6 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				B3C8445B198DC17500DCBEE6 /* JGPeerCommunicator.h */,
-				B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */,
 				B3C84455198DB27D00DCBEE6 /* JGPeerKeychain.h */,
 				B3C84456198DB27D00DCBEE6 /* JGPeerKeychain.m */,
 				B3C84458198DB61E00DCBEE6 /* JGSecurityKey.h */,
 				B3C84459198DB61E00DCBEE6 /* JGSecurityKey.m */,
 			);
 			name = Security;
+			sourceTree = "<group>";
+		};
+		B3F4DF1C198EFBA00033FD3D /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				B3F4DF16198EC0520033FD3D /* JGTransactionIdentifier.h */,
+				B3F4DF17198EC0520033FD3D /* JGTransactionIdentifier.m */,
+				B3F4DF19198EF2BF0033FD3D /* JGPeerMessage.h */,
+				B3F4DF1A198EF2BF0033FD3D /* JGPeerMessage.m */,
+				B3F4DF1D198F0D410033FD3D /* JGUnlockCommunicator.h */,
+				B3F4DF1E198F0D410033FD3D /* JGUnlockCommunicator.m */,
+				B3C8445B198DC17500DCBEE6 /* JGPeerCommunicator.h */,
+				B3C8445C198DC17500DCBEE6 /* JGPeerCommunicator.m */,
+			);
+			name = Communication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +302,7 @@
 			files = (
 				B36657A71985DC46003CECB6 /* JGAddDeviceWindowController.m in Sources */,
 				B34FCD911985DD49008F2514 /* SSKeychainQuery.m in Sources */,
+				B3F4DF18198EC0520033FD3D /* JGTransactionIdentifier.m in Sources */,
 				B36651B71985B03C009FAD1C /* AppDelegate.m in Sources */,
 				B3C84457198DB27D00DCBEE6 /* JGPeerKeychain.m in Sources */,
 				B3C8445A198DB61E00DCBEE6 /* JGSecurityKey.m in Sources */,
@@ -286,6 +310,8 @@
 				B31C45DB1988D2BE000062C3 /* NSUUID+Data.m in Sources */,
 				B36651B41985B03B009FAD1C /* main.m in Sources */,
 				B34FCD901985DD49008F2514 /* SSKeychain.m in Sources */,
+				B3F4DF1B198EF2BF0033FD3D /* JGPeerMessage.m in Sources */,
+				B3F4DF1F198F0D410033FD3D /* JGUnlockCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
