@@ -69,7 +69,7 @@
         [self.browser stopBrowsingForPeers];
         [self.peers removeAllObjects];
         self.them = peerID;
-        [self setupTrust];
+      //  [self setupTrust];
     }
     else if (state == MCSessionStateNotConnected) {
         if (peerID == self.them) {
@@ -101,15 +101,15 @@
 
 #pragma mark - Security
 
--(void)setupTrust{
-    
-    [self.session sendResourceAtURL:[NSURL URLWithString:publicPath] withName:@"publicKey" toPeer:self.them withCompletionHandler:^(NSError *error) {
-        if (error) [NSException raise:@"FUCK THE WORLD" format:@"WE DIDN'T SEND THE FUCKING KEY KAY %@",error];
-        self.didSendKeySuccessfully = YES;
-    }];
-#warning We should probably say who we are so multiple users can send their own private key or some shit
-    
-}
+//-(void)setupTrust{
+//    
+//    [self.session sendResourceAtURL:[NSURL URLWithString:publicPath] withName:@"publicKey" toPeer:self.them withCompletionHandler:^(NSError *error) {
+//        if (error) [NSException raise:@"FUCK THE WORLD" format:@"WE DIDN'T SEND THE FUCKING KEY KAY %@",error];
+//        self.didSendKeySuccessfully = YES;
+//    }];
+//#warning We should probably say who we are so multiple users can send their own private key or some shit
+//    
+//}
 
 -(void)setDidSendKeySuccessfully:(BOOL)didSendKeySuccessfully{
     _didSendKeySuccessfully = didSendKeySuccessfully;

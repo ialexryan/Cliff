@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL userAllowsLockScreenAuth;
 @property (nonatomic) CBPeripheralManager *manager;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @end
 
@@ -26,7 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%i", self.userAllowsLockScreenAuth);
+
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner setColor:[UIColor blackColor]];
     // Do any additional setup after loading the view, typically from a nib.
 
     [[NSNotificationCenter defaultCenter]addObserverForName:@"deviceUnlockedWithAuthentication" object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -36,6 +39,9 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receivedUnlockRequest) name:@"receivedUnlockRequest" object:nil];
 
     _manager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
+  
+  self.statusLabel.text = @"view loaded.";
+  [self receivedUnlockRequest];
 }
 
 -(void)receivedUnlockRequest{
@@ -45,7 +51,7 @@
     // Check to make sure the user still has TouchID
     if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
 
-        // Skip TouchID if they unlocked recently and allow this
+        // Skip TouchID if they unlocked recently and allow that
         if (self.recentlyAuthenticated && self.userAllowsLockScreenAuth) [self tellComputerToUnlock];
 
         // Authenticate with TouchID
@@ -68,11 +74,19 @@
 }
 
 -(void)handleTouchIDError:(NSError *)errorCode {
-    self.statusLabel.text = errorCode.description;
+  NSLog(@"%@", errorCode);
+  // Can't update UI elements from background thread...
+    dispatch_async(dispatch_get_main_queue(), ^{
+      self.statusLabel.text = errorCode.localizedDescription;
+    });
 }
 
 -(void)tellComputerToUnlock{
-    self.statusLabel.text = @"Unlocking computer...";
+  // Can't update UI elements from background thread...
+    dispatch_async(dispatch_get_main_queue(), ^{
+      self.statusLabel.text = @"Unlocking computer...";
+      [self.spinner startAnimating];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
