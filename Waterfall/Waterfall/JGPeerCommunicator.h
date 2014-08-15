@@ -30,7 +30,6 @@
 
 -(void)sendData:(NSData*)data toTrustedPeer:(NSUUID*)trustedPeer encrypted:(BOOL)encrypted;
 +(instancetype)peerCommunicatorWithKeychain:(JGPeerKeychain*)keychain;
--(instancetype)initWithKeychain:(JGPeerKeychain*)keychain NS_DESIGNATED_INITIALIZER;
 
 @end
 

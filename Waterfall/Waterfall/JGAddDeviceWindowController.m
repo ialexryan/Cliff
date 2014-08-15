@@ -102,11 +102,11 @@
 #pragma mark - Security
 
 -(void)setupTrust{
-    
-    [self.session sendResourceAtURL:[NSURL URLWithString:publicPath] withName:@"publicKey" toPeer:self.them withCompletionHandler:^(NSError *error) {
-        if (error) [NSException raise:@"FUCK THE WORLD" format:@"WE DIDN'T SEND THE FUCKING KEY KAY %@",error];
-        self.didSendKeySuccessfully = YES;
-    }];
+//    
+//    [self.session sendResourceAtURL:[NSURL URLWithString:publicPath] withName:@"publicKey" toPeer:self.them withCompletionHandler:^(NSError *error) {
+//        if (error) [NSException raise:@"FUCK THE WORLD" format:@"WE DIDN'T SEND THE FUCKING KEY KAY %@",error];
+//        self.didSendKeySuccessfully = YES;
+//    }];
 #warning We should probably say who we are so multiple users can send their own private key or some shit
     
 }

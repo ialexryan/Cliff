@@ -117,7 +117,7 @@
 #warning Might be the wrong method...
 
     // WE FIRST NEED TO DECRYPT AND REMOVE THE FIRST BYTE
-    [self.delegate didRecieveData:characteristic.value fromTrustedPeer:<#(NSUUID *)#>]
+    //[self.delegate didRecieveData:characteristic.value fromTrustedPeer:<#(NSUUID *)#>]
 }
 
 //

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JGPeerCommunicator.h"
 #import "JGPeerKeychain.h"
 
 @interface AppDelegate ()
@@ -16,6 +17,7 @@
 @property NSWindowController *pairController;
 
 @property (nonatomic) BOOL lockScreenVisible;
+@property (nonatomic) JGCentralPeerCommunicator *communicator;
 
 @end
 
@@ -24,10 +26,7 @@
             
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    
-    // Ivars
-    _connectedPeripherals = [NSMutableArray array];
-    
+  
     // Status Bar
     _statusItem = [[NSStatusBar systemStatusBar]statusItemWithLength:NSVariableStatusItemLength];
     [_statusItem setImage:[NSImage imageNamed:@"menu_icon"]];
@@ -44,8 +43,9 @@
     NSString *documentDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSURL *dir = [NSURL URLWithString:[documentDirectory stringByAppendingPathComponent:@"keychain_metadata"]];
 
-
-
+    JGPeerKeychain *keychain = [JGPeerKeychain peerKeychainWithSaveDirectory:dir];
+    self.communicator = [JGCentralPeerCommunicator peerCommunicatorWithKeychain:keychain];
+    self.communicator.enabled = YES;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -73,11 +73,11 @@
 }
 
 -(void)lockScreenAppeared{
-    self.shouldBeScanning = YES;
+    self.communicator.enabled = YES;
 }
 
 -(void)lockScreenDismissed{
-    self.shouldBeScanning = NO;
+    self.communicator.enabled = NO;
 }
 
 #pragma mark - Setters
@@ -95,10 +95,6 @@
 - (IBAction)quitPress:(id)sender {
     [[NSApplication sharedApplication]terminate:self];
 }
-
-#pragma mark - Core Bluetooth
-
-
 
 
 @end
